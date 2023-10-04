@@ -97,21 +97,17 @@ input[type="text"] {
     box-shadow: 5px 5px 5px rgb(0, 0, 0);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-}
 
 button.delete-button {
     background-color: #dc3545;
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+.playerList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -ms-flex-direction: row;
 }
