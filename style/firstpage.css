@@ -4,7 +4,7 @@ body {
     
     margin: 0;
     text-align: center;
-    background-image: url(./img/125916.jpg);
+    background-image: url(../img/125916.jpg);
     
 }
 
@@ -23,7 +23,7 @@ h1 {
     justify-content: center;
     align-items: center;
     block-size: 100vh;
-    background-image: url(./img/whosthatpokemon.png);
+    background-image: url(../img/whosthatpokemon.png);
     background-position-x: center;
     background-repeat: no-repeat;
 }
