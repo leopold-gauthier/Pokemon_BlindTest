@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <script src="./js/main.js" type="module" defer></script>
+    
     <title>Accueil</title>
   </head>
   <body>
@@ -28,7 +28,17 @@
     </div>
     <!-- 2eme vue -->
     <div class="player-selector d-none">
-      <input type="text" name="player" id="" />
+      <h1>Ajouter des joueurs</h1>
+      <input type="text" name="player" id="playerName" />
+      <button class ="AddPlayer">Ajouter</button>
+    
+      <!-- Liste des joueurs -->
+      <ul id="playerList">
+        <!-- Les joueurs seront ajoutés ici -->
+      </ul>
+      <div class="Gameboy"> 
+        <img src="./img/gameboy.png" alt="Gameboy">
+      </div>
     </div>
     <!-- 3e vue -->
     <div class="game-start d-none">
@@ -54,5 +64,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/main.js" type="module" defer></script>
   </body>
 </html>
