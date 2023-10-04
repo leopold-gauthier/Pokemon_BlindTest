@@ -34,11 +34,11 @@ function gameSelector() {
         gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
         console.log("blur");
         ShowHidden(gameSelect, playerSelector);
-        
+
     });
 }
 
-function ShowHidden(target,nextTarget){
+function ShowHidden(target, nextTarget) {
     target.classList.toggle("d-none");
     nextTarget.classList.toggle("d-none");
 }

@@ -11,7 +11,7 @@ export function playerAdd() {
     const playerList = document.getElementById('playerList');
     const btnAddPlayer = document.getElementById('btnPlayerAdd');
 
-    btnAddPlayer.addEventListener("click", function() {
+    btnAddPlayer.addEventListener("click", function () {
         const playerNameInput = document.getElementById('playerAdd');
         const playerName = playerNameInput.value;
 
@@ -20,17 +20,17 @@ export function playerAdd() {
             const newDiv = document.createElement('div');
 
             // Ajoutez une classe à la nouvelle div
-            newDiv.classList.add("caseJoueur"); 
-            
+            newDiv.classList.add("caseJoueur");
+
             newDiv.innerHTML = `
-                <i class="fa-solid fa-user" style="color: #000000;"></i>
+                <i class="fa-solid fa-circle-user"></i>
                 <input type="text" value="${playerName}" readonly >
-                <button class="deletePlayer"><i class="fa-solid fa-circle-minus"></i></button>
+                <button class="deletePlayer"><i class="fa-solid fa-delete-left"></i></button>
             `;
-            
+
             // Ajoutez un gestionnaire d'événement pour le bouton "Supprimer"
             const deleteButton = newDiv.querySelector('.deletePlayer');
-            deleteButton.addEventListener("click", function() {
+            deleteButton.addEventListener("click", function () {
                 newDiv.remove();
             });
 
@@ -40,15 +40,15 @@ export function playerAdd() {
             playerNameInput.value = "";
         }
     });
-        // Ajoutez un gestionnaire d'événements pour la touche "Entrée" dans le champ de texte
-        const playerNameInput = document.getElementById('playerAdd');
-        playerNameInput.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                // Déclenchez le clic sur le bouton "Ajouter"
-                btnAddPlayer.click();
-            }
-        });
+    // Ajoutez un gestionnaire d'événements pour la touche "Entrée" dans le champ de texte
+    const playerNameInput = document.getElementById('playerAdd');
+    playerNameInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            // Déclenchez le clic sur le bouton "Ajouter"
+            btnAddPlayer.click();
         }
+    });
+}
 
 playerAdd();
