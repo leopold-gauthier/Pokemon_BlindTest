@@ -1,5 +1,5 @@
 //imports
-import { User } from "./user.js";
+import { playerAdd } from "./user.js";
 
 
 // sélection du DOM
@@ -41,6 +41,4 @@ function ShowHidden(target,nextTarget){
     nextTarget.classList.toggle("d-none");
 }
 
-
 gameSelector();
-
