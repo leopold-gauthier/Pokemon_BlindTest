@@ -1,4 +1,7 @@
 //imports
+import { ShowHidden } from "./showhidden";
+import { gameSelector } from "./gameSelector";
+import { User } from "./User";
 
 
 // sélection du DOM
