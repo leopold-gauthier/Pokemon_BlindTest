@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
     
     <title>Accueil</title>
   </head>
@@ -28,17 +29,21 @@
     </div>
     <!-- 2eme vue -->
     <div class="player-selector d-none">
-      <h1>Ajouter des joueurs</h1>
+      <h1 id="gameTitle">Jeu :</h1>
+      <div class="Gameboy"> 
+        <img src="./img/gameboy.png" alt="Gameboy" style="inline-size: 250px;">
+      </div>
+      <h1 class="addTitre">Ajouter des joueurs</h1>
       <input type="text" name="player" id="playerAdd" />
-      <button id="btnPlayerAdd">+</button>
+      <button id="btnPlayerAdd"><i class="fa-solid fa-plus"></i></button>
     
       <!-- Liste des joueurs -->
       <div id="playerList">
         <!-- Les joueurs seront ajoutés ici -->
+        
       </div>
-      <button id="Valider">Valider</button>
-      <div class="Gameboy"> 
-        <img src="./img/gameboy.png" alt="Gameboy">
+      <div class="BoutonValider">
+       <button id="Valider">Valider <i class="fa-solid fa-check"></i></button>
       </div>
     </div>
     <!-- 3e vue -->

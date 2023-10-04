@@ -24,12 +24,14 @@ function gameSelector() {
 
     shadowBox.addEventListener("click", () => {
         pkmn_img.classList.add("shadow");
+        gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
         console.log("shadow");
         ShowHidden(gameSelect, playerSelector);
-        });
+    });
 
     blurBox.addEventListener("click", () => {
         pkmn_img.classList.add("blur");
+        gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
         console.log("blur");
         ShowHidden(gameSelect, playerSelector);
         
