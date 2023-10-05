@@ -98,6 +98,10 @@ rdy.addEventListener("click", () => {
     .then((randomPokemonData) => {
       pkmnImg.src = randomPokemonData.image;
       console.log("Pokémon aléatoire :", randomPokemonData);
+      const pokemonResultDiv = document.getElementById("pokemon_result");
+
+      pokemonResultDiv.textContent =
+        "Le pokémon était : " + randomPokemonData.name;
     })
     .catch((error) => {
       console.error(
@@ -137,6 +141,20 @@ showBtn.addEventListener("click", () => {
     effectsOff();
   }
   ShowHidden(mainGame, results);
+  const playersResultDiv = document.getElementById("players_result");
+
+  // Efface le contenu précédent du div
+  playersResultDiv.innerHTML = "";
+
+  // Boucle sur le tableau d'utilisateurs
+  for (const user of users) {
+    // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
+    const userParagraph = document.createElement("button");
+    userParagraph.textContent = `Nom: ${user.name}, Score: ${user.score}`;
+
+    // Ajoute le paragraphe au div
+    playersResultDiv.appendChild(userParagraph);
+  }
 });
 // vue 5 -------
 next.addEventListener("click", () => {
