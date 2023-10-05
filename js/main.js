@@ -14,7 +14,7 @@ const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
 const showResponses = document.querySelector(".show-respones");
 const results = document.querySelector(".results");
-
+const gameTitle = document.querySelector("#gameTitle");
 // boutons users
 const users = document.querySelector("#users");
 const next = document.querySelector("#next");
@@ -26,29 +26,24 @@ let choiceMod = "";
 
 function gameSelector() {
 
-    shadowBox.addEventListener("click", () => {
-
-        choiceMod = "shadow";
-        console.log("shadow");
-        ShowHidden(gameSelect, playerSelector);
-    });
-    
     blurBox.addEventListener("click", () => {
         choiceMod = "blur";
-        pkmnImg.style.filter = "brightness(0)";
-        pkmn_img.classList.add("shadow");
-        gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
-        console.log("shadow");
-        ShowHidden(gameSelect, playerSelector);
-    });
-
-    blurBox.addEventListener("click", () => {
-        pkmn_img.classList.add("blur");
+        pkmnImg.classList.add("blur");
         gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
         console.log("blur");
         ShowHidden(gameSelect, playerSelector);
 
     });
+
+    shadowBox.addEventListener("click", () => {
+        choiceMod = "shadow";
+        pkmnImg.style.filter = "brightness(0)";
+        pkmnImg.classList.add("shadow");
+        gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
+        console.log("shadow");
+        ShowHidden(gameSelect, playerSelector);
+    });
+    
 }
 
 function ShowHidden(target, nextTarget) {
