@@ -321,7 +321,15 @@ input[type="text"] {
     -o-transform: scale(1.05);
 }
 
-#btnGo:hover{animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both}
+#btnGo:hover{ animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both; -webkit-animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both; }
 
 
 @keyframes shake-top{0%,100%{transform:rotate(0deg);transform-origin:50% 0}10%{transform:rotate(2deg)}20%,40%,60%{transform:rotate(-4deg)}30%,50%,70%{transform:rotate(4deg)}80%{transform:rotate(-2deg)}90%{transform:rotate(2deg)}}
+
+/* Styles pour la troisième vue */
+
+.main-game {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 20px;
+}
