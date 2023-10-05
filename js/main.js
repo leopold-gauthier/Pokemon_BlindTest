@@ -165,6 +165,21 @@ showBtn.addEventListener("click", () => {
       isClicked = false;
       if (user.score >= scoreMax) {
         ShowHidden(results, gameEnd);
+        users.sort((a, b) => b.score - a.score);
+
+        // Créez une nouvelle div pour afficher les utilisateurs triés
+        const sortedUsersDiv = document.createElement("div");
+        sortedUsersDiv.classList.add("sortedUsers");
+
+        // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
+        for (const sortedUser of users) {
+          const userParagraph = document.createElement("p");
+          userParagraph.textContent = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          sortedUsersDiv.appendChild(userParagraph);
+        }
+
+        // Ajoutez la div triée à la page
+        document.body.appendChild(sortedUsersDiv);
       } else {
         ShowHidden(results, gameStart);
       }
