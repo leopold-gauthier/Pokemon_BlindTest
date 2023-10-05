@@ -3,8 +3,8 @@
 	div#pokedex
 	{
 		margin: 50px auto 0 auto;
+        padding-left: 90px;
 		margin-bottom: 20px;
-        padding-left: 100px;
         
 	}
 
@@ -720,7 +720,7 @@
 		z-index: 1;
 		font-size: 13px;
 		font-family: arial, sans-serif;
-
+		text-align: -webkit-center;
 		position: absolute;
 		top: 130px;
 		left: 25px;

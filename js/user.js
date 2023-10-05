@@ -1,9 +1,11 @@
 export class User {
   name = "";
   score = 0;
-  constructor(name, score = 0) {
+  pokemon = [];
+  constructor(name, score = 0, pokemon = []) {
     this.name = name;
     this.score = score;
+    this.pokemon = pokemon;
   }
 }
 

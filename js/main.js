@@ -12,6 +12,7 @@ const playerSelector = document.querySelector(".player-selector");
 const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
+const gameEnd = document.querySelector(".game-end");
 
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
@@ -25,6 +26,8 @@ let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
+let scoreMax = 5;
+let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
 function ShowHidden(target, nextTarget) {
@@ -99,11 +102,10 @@ rdy.addEventListener("click", () => {
       pkmnImg.src = randomPokemonData.image;
       console.log("Pokémon aléatoire :", randomPokemonData);
       const pokemonResultDiv = document.getElementById("pokemon_result");
-
       pokemonResultDiv.textContent = randomPokemonData.name;
       const pokemonResultImg = document.getElementById("pkmn-imgresult");
       pokemonResultImg.src = randomPokemonData.image;
-      
+      currentPokemon = pokemonResultImg.src;
     })
     .catch((error) => {
       console.error(
@@ -116,8 +118,8 @@ rdy.addEventListener("click", () => {
 // vue 4 -------
 async function findRandomPokemon() {
   try {
-    // Génère un nombre aléatoire entre 1 et 151 (inclus)
-    const randomPokemonNumber = Math.floor(Math.random() * 400) + 1;
+    // Génère un nombre aléatoire entre 1 et 493 (inclus)
+    const randomPokemonNumber = Math.floor(Math.random() * 151) + 1;
     const apiUrl = `https://pokebuildapi.fr/api/v1/pokemon/${randomPokemonNumber}`;
 
     // Récupère les données JSON de l'API en utilisant le numéro généré aléatoirement
@@ -134,7 +136,11 @@ async function findRandomPokemon() {
     console.error("Une erreur s'est produite :", error);
   }
 }
-
+// reset image et état du bouton
+function resetImgState() {
+  isClicked = false;
+  pkmnImg.src = "";
+}
 showBtn.addEventListener("click", () => {
   isClicked = true;
   if (choiceMod == "blur") {
@@ -160,15 +166,42 @@ showBtn.addEventListener("click", () => {
 
     userParagraph.addEventListener("click", () => {
       user.score += 1;
+      user.pokemon.push(currentPokemon);
       userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
-      isClicked = false;
-      ShowHidden(results, gameStart);
+      resetImgState();
+      if (user.score >= scoreMax) {
+        ShowHidden(results, gameEnd);
+        users.sort((a, b) => b.score - a.score);
+
+        // Créez une nouvelle div pour afficher les utilisateurs triés
+        const sortedUsersDiv = document.createElement("div");
+        sortedUsersDiv.classList.add("sortedUsers");
+
+        // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
+        for (const sortedUser of users) {
+          const userParagraph = document.createElement("p");
+          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          sortedUser.pokemon.forEach((element) => {
+            userParagraph.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
+          });
+          sortedUsersDiv.appendChild(userParagraph);
+        }
+
+        // Ajoutez la div triée à la page
+        document.body.appendChild(sortedUsersDiv);
+      } else {
+        ShowHidden(results, gameStart);
+      }
     });
   }
 });
 // vue 5 -------
 
+// vue 6 -------
+
 next.addEventListener("click", () => {
-  isClicked = false;
+  resetImgState();
   ShowHidden(results, gameStart);
 });
+
+console.log(users);

@@ -57,7 +57,7 @@ button {
 /* Styles pour la deuxième vue */
 
 
-.pokeball{
+.pokeball {
     inline-size: 70px;
 }
 
@@ -248,7 +248,7 @@ input[type="text"] {
 }
 
 #btnBack {
-    
+
     background-color: #028d1da9;
     inline-size: 150px;
     color: white;
@@ -290,13 +290,27 @@ input[type="text"] {
     align-items: center;
 }
 
-.ready{animation:pulsate-fwd .5s ease-in-out infinite both}
+.ready {
+    animation: pulsate-fwd .5s ease-in-out infinite both
+}
 
- @keyframes pulsate-fwd{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes pulsate-fwd {
+    0% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
 
 
 
- #btnGo {
+#btnGo {
     inline-size: 300px;
     margin: 20px;
     padding: 20px;
@@ -311,7 +325,7 @@ input[type="text"] {
     justify-content: space-around;
 
 
- }
+}
 
 
 #btnGo:hover {
@@ -324,10 +338,38 @@ input[type="text"] {
     -o-transform: scale(1.05);
 }
 
-#btnGo:hover{ animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both; -webkit-animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both; }
+#btnGo:hover {
+    animation: shake-top .8s cubic-bezier(.455, .03, .515, .955) both;
+    -webkit-animation: shake-top .8s cubic-bezier(.455, .03, .515, .955) both;
+}
 
 
-@keyframes shake-top{0%,100%{transform:rotate(0deg);transform-origin:50% 0}10%{transform:rotate(2deg)}20%,40%,60%{transform:rotate(-4deg)}30%,50%,70%{transform:rotate(4deg)}80%{transform:rotate(-2deg)}90%{transform:rotate(2deg)}}
+@keyframes shake-top {
+    0%, 100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 0
+    }
+
+    10% {
+        transform: rotate(2deg)
+    }
+
+    20%, 40%, 60% {
+        transform: rotate(-4deg)
+    }
+
+    30%, 50%, 70% {
+        transform: rotate(4deg)
+    }
+
+    80% {
+        transform: rotate(-2deg)
+    }
+
+    90% {
+        transform: rotate(2deg)
+    }
+}
 
 /* Styles pour la troisième vue */
 
@@ -362,6 +404,13 @@ input[type="text"] {
 }
 }
 
+@media (max-width: 600px) {
+    #players_result {
+        flex-direction: column;
+    }
+}
+
+
 .listeResult {
     padding: 20px;
     inline-size: 250px;
@@ -381,18 +430,44 @@ input[type="text"] {
 }
 
 .listeResult:hover {
-        background-color: #009c12;
-        color: #fff;
-        transform: scale(1.05);
-        -webkit-transform: scale(1.05);
-        -moz-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        -o-transform: scale(1.05);
-        animation:heartbeat 1.5s ease-in-out infinite both    ;
-        -webkit-animation:heartbeat 1.5s ease-in-out infinite both;
+    background-color: #009c12;
+    color: #fff;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    animation: heartbeat 1.5s ease-in-out infinite both;
+    -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
-@keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+        transform-origin: center center;
+        animation-timing-function: ease-out
+    }
+
+    10% {
+        transform: scale(.91);
+        animation-timing-function: ease-in
+    }
+
+    17% {
+        transform: scale(.98);
+        animation-timing-function: ease-out
+    }
+
+    33% {
+        transform: scale(.87);
+        animation-timing-function: ease-in
+    }
+
+    45% {
+        transform: scale(1);
+        animation-timing-function: ease-out
+    }
+}
 
 #next {
 
