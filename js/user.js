@@ -1,3 +1,4 @@
+
 export class User {
     name = "";
     score = 0;
@@ -7,10 +8,10 @@ export class User {
     }
 }
 
-export function playerAdd() {
+export function playerAdd(users) {
+    
     const playerList = document.getElementById('playerList');
     const btnAddPlayer = document.getElementById('btnPlayerAdd');
-    const users = []; // Tableau pour stocker les instances de la classe User
 
     btnAddPlayer.addEventListener("click", function () {
         const playerNameInput = document.getElementById('playerAdd');
@@ -46,15 +47,14 @@ export function playerAdd() {
                 newDiv.remove();
 
                 // Vous pouvez maintenant utiliser "newUser" ici si nécessaire
-                console.log(newUser);
             });
 
             playerList.appendChild(newDiv);
 
             // Réinitialisez la valeur de l'input
             playerNameInput.value = "";
+            // return users;
         }
     });
 }
 
-playerAdd();

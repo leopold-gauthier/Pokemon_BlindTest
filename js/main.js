@@ -15,11 +15,12 @@ const pkmnImg = document.querySelector("#pkmn-img");
 const showResponses = document.querySelector(".show-respones");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
-// boutons users
-const users = document.querySelector("#users");
-const next = document.querySelector("#next");
+// boutons 
+const start = document.querySelector("#start");
+const ready = document.querySelector("#next");
 
-// variables globales
+// variables 
+let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 
 //FUNCTION GAME CHOICE
@@ -52,3 +53,17 @@ function ShowHidden(target, nextTarget) {
 }
 
 gameSelector();
+
+playerAdd(users);
+
+// FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
+
+function startGame(){
+    
+    if(users >= 1){
+        console.log("ca marche");
+    }
+}
+
+
+startGame();
