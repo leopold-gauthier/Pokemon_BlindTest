@@ -110,7 +110,7 @@ input[type="text"] {
 .Gameboy {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-block-start: 20px;
 }
 
 .caseJoueur input {
