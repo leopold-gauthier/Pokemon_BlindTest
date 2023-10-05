@@ -70,13 +70,49 @@ startGame();
 function ready() {
   rdy.addEventListener("click", () => {
     ShowHidden(gameStart, mainGame);
+
     if (choiceMod == "blur") {
         blur(pkmnImg, showBtn);
     }
+
+    // Utilisation de la fonction pour récupérer un Pokémon aléatoire
+    findRandomPokemon()
+      .then((randomPokemonData) => {
+        pkmnImg.src = randomPokemonData.image;
+        console.log("Pokémon aléatoire :", randomPokemonData);
+      })
+      .catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la récupération du Pokémon :",
+          error
+        );
+      });
+
   });
 }
 ready();
 // vue 4 -------
+async function findRandomPokemon() {
+  try {
+    // Génère un nombre aléatoire entre 1 et 151 (inclus)
+    const randomPokemonNumber = Math.floor(Math.random() * 151) + 1;
+    const apiUrl = `https://pokebuildapi.fr/api/v1/pokemon/${randomPokemonNumber}`;
+
+    // Récupère les données JSON de l'API en utilisant le numéro généré aléatoirement
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("La requête vers l'API a échoué.");
+    }
+
+    const data = await response.json();
+
+    return data; // Retourne les données du Pokémon aléatoire
+  } catch (error) {
+    console.error("Une erreur s'est produite :", error);
+  }
+}
+
 showBtn.addEventListener("click", () => (isClicked = true));
 if (choiceMod == "blur") {
   blur(pkmnImg, showBtn);
