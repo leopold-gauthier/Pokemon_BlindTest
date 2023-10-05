@@ -42,7 +42,7 @@ function gameSelector() {
 
   shadowBox.addEventListener("click", () => {
     choiceMod = "shadow";
-    pkmnImg.classList.add("shadow");
+    pkmnImg.style.filter = "brightness(0)";
     gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
     console.log("shadow");
     ShowHidden(gameSelect, playerSelector);
@@ -57,40 +57,36 @@ playerAdd(users);
 // FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
 
 // vue 2 -------
-function startGame() {
-  start.addEventListener("click", () => {
-    if (users.length >= 2) {
-      ShowHidden(playerSelector, gameStart);
-    }
-  });
-}
 
-startGame();
+start.addEventListener("click", () => {
+  if (users.length >= 2) {
+    ShowHidden(playerSelector, gameStart);
+  }
+});
+
 // vue 3 -------
-function ready() {
-  rdy.addEventListener("click", () => {
-    ShowHidden(gameStart, mainGame);
 
-    if (choiceMod == "blur") {
-        blur(pkmnImg, showBtn);
-    }
+rdy.addEventListener("click", () => {
+  ShowHidden(gameStart, mainGame);
 
-    // Utilisation de la fonction pour récupérer un Pokémon aléatoire
-    findRandomPokemon()
-      .then((randomPokemonData) => {
-        pkmnImg.src = randomPokemonData.image;
-        console.log("Pokémon aléatoire :", randomPokemonData);
-      })
-      .catch((error) => {
-        console.error(
-          "Une erreur s'est produite lors de la récupération du Pokémon :",
-          error
-        );
-      });
+  if (choiceMod == "blur") {
+    blur(pkmnImg, showBtn);
+  }
 
-  });
-}
-ready();
+  // Utilisation de la fonction pour récupérer un Pokémon aléatoire
+  findRandomPokemon()
+    .then((randomPokemonData) => {
+      pkmnImg.src = randomPokemonData.image;
+      console.log("Pokémon aléatoire :", randomPokemonData);
+    })
+    .catch((error) => {
+      console.error(
+        "Une erreur s'est produite lors de la récupération du Pokémon :",
+        error
+      );
+    });
+});
+
 // vue 4 -------
 async function findRandomPokemon() {
   try {
@@ -114,17 +110,15 @@ async function findRandomPokemon() {
 }
 
 showBtn.addEventListener("click", () => {
-    isClicked = true;
-if (choiceMod == "blur") {
-  blur(pkmnImg, showBtn);
-} else {
-  pkmnImg.classList.remove("shadow");
-}
-ShowHidden(mainGame, results);
-})
+  isClicked = true;
+  if (choiceMod == "blur") {
+    blur(pkmnImg, showBtn);
+  } else {
+    pkmnImg.style.filter = "none";
+  }
+  ShowHidden(mainGame, results);
+});
 // vue 5 -------
 next.addEventListener("click", () => {
-    ShowHidden(results, gameStart);
-    startGame();
-    ready();
+  ShowHidden(results, gameStart);
 });
