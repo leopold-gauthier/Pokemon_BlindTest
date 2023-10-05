@@ -115,7 +115,7 @@ rdy.addEventListener("click", () => {
 async function findRandomPokemon() {
   try {
     // Génère un nombre aléatoire entre 1 et 151 (inclus)
-    const randomPokemonNumber = Math.floor(Math.random() * 151) + 1;
+    const randomPokemonNumber = Math.floor(Math.random() * 400) + 1;
     const apiUrl = `https://pokebuildapi.fr/api/v1/pokemon/${randomPokemonNumber}`;
 
     // Récupère les données JSON de l'API en utilisant le numéro généré aléatoirement
@@ -154,9 +154,17 @@ showBtn.addEventListener("click", () => {
 
     // Ajoute le paragraphe au div
     playersResultDiv.appendChild(userParagraph);
+
+    userParagraph.addEventListener("click", () => {
+      user.score += 1;
+      userParagraph.textContent = `Nom: ${user.name}, Score: ${user.score}`;
+      isClicked = false;
+      ShowHidden(results, gameStart);
+    });
   }
 });
 // vue 5 -------
+
 next.addEventListener("click", () => {
   isClicked = false;
   ShowHidden(results, gameStart);
