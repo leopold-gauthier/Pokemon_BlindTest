@@ -76,7 +76,7 @@ ready();
 // vue 4 -------
 showBtn.addEventListener("click", () => (isClicked = true));
 if (choiceMod == "blur") {
-  blur(pkmnImg);
+  blur(pkmnImg, showBtn);
 } else {
   pkmnImg.classList.remove("shadow");
 }
