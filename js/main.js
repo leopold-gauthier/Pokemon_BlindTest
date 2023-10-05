@@ -18,7 +18,7 @@ const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
 // boutons
 const start = document.querySelector("#btnStart");
-const ready = document.querySelector("#next");
+const rdy = document.querySelector("#btnGo");
 
 // variables
 let users = []; // Tableau pour stocker les instances de la classe User
@@ -56,6 +56,7 @@ playerAdd(users);
 
 // FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
 
+// vue 2 -------
 function startGame() {
   start.addEventListener("click", () => {
     if (users.length >= 2) {
@@ -65,14 +66,17 @@ function startGame() {
 }
 
 startGame();
-// vue 2 -------
-
 // vue 3 -------
-
+function ready() {
+  rdy.addEventListener("click", () => {
+    ShowHidden(gameStart, mainGame);
+  });
+}
+ready();
 // vue 4 -------
 showBtn.addEventListener("click", () => (isClicked = true));
 if (choiceMod == "blur") {
-  blur(pkmnImg);
+  blur(pkmnImg, showBtn);
 } else {
   pkmnImg.classList.remove("shadow");
 }
