@@ -16,59 +16,53 @@ const showResponses = document.querySelector(".show-respones");
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
-// boutons 
-const start = document.querySelector("#start");
+// boutons
+const start = document.querySelector("#btnStart");
 const ready = document.querySelector("#next");
 
-// variables 
+// variables
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 //FUNCTION GAME CHOICE
 
 function ShowHidden(target, nextTarget) {
-    target.classList.toggle("d-none");
-    nextTarget.classList.toggle("d-none");
+  target.classList.toggle("d-none");
+  nextTarget.classList.toggle("d-none");
 }
 
 function gameSelector() {
+  blurBox.addEventListener("click", () => {
+    choiceMod = "blur";
+    pkmnImg.style.filter = "blur(40)";
+    gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
+    console.log("blur");
+    ShowHidden(gameSelect, playerSelector);
+  });
 
-    blurBox.addEventListener("click", () => {
-        choiceMod = "blur";
-        pkmnImg.style.filter = "blur(40)";
-        gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
-        console.log("blur");
-        ShowHidden(gameSelect, playerSelector);
-
-    });
-
-    shadowBox.addEventListener("click", () => {
-        choiceMod = "shadow";
-        pkmnImg.classList.add("shadow");
-        gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
-        console.log("shadow");
-        ShowHidden(gameSelect, playerSelector);
-    });
-    
+  shadowBox.addEventListener("click", () => {
+    choiceMod = "shadow";
+    pkmnImg.classList.add("shadow");
+    gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
+    console.log("shadow");
+    ShowHidden(gameSelect, playerSelector);
+  });
 }
-
-
 
 // vue 1 -------
 gameSelector();
-
 
 playerAdd(users);
 
 // FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
 
-function startGame(){
-    
-    if(users >= 1){
-        console.log("ca marche");
+function startGame() {
+  start.addEventListener("click", () => {
+    if (users.length >= 2) {
+      ShowHidden(playerSelector, gameStart);
     }
+  });
 }
-
 
 startGame();
 // vue 2 -------
@@ -76,13 +70,11 @@ startGame();
 // vue 3 -------
 
 // vue 4 -------
-showBtn.addEventListener("click", ()=> isClicked = true);
+showBtn.addEventListener("click", () => (isClicked = true));
 if (choiceMod == "blur") {
-    blur(pkmnImg);
+  blur(pkmnImg);
 } else {
-    pkmnImg.classList.remove("shadow");
+  pkmnImg.classList.remove("shadow");
 }
 
-
 // vue 5 -------
-
