@@ -1,89 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/firstpage.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/2c8b369b04.js"
-      crossorigin="anonymous"
-    ></script>
 
-    <title>Accueil</title>
-  </head>
-  <body>
-    <h1>Welcome to Pokémon Games!</h1>
-    <!-- 1ere vue -->
-    <div class="game-selector">
-      <div id="blur" class="game-option">Play Pokémon Flou</div>
-      <div id="shadow" class="game-option">Play Who's That Pokémon?</div>
-    </div>
-    <!-- 2eme vue -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/firstpage.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/2c8b369b04.js" crossorigin="anonymous"></script>
 
-    <div class="player-selector d-none">
-      <h1 id="gameTitle">Jeu :</h1>
-      <div class="Gameboy">
-        <img src="./img/gameboy.png" alt="Gameboy" style="inline-size: 250px" />
-      </div>
-      <h1 class="addTitre">Ajouter des joueurs</h1>
-      <input type="text" name="player" id="playerAdd" />
-      <button id="btnPlayerAdd"><i class="fa-solid fa-plus"></i></button>
+  <title>Accueil</title>
+</head>
 
-      <!-- Liste des joueurs -->
-      <div id="playerList">
-        <!-- Les joueurs seront ajoutés ici -->
-      </div>
-      <div class="StartContainer">
-        <button id="btnStart">Valider <i class="fa-solid fa-check"></i></button>
-      </div>
-      <button id="btnBack">
-        <a href="index.html"
-          >Retour <i class="fa-solid fa-arrow-left-long"></i>
-          <img src="img/pokeball.png" class="pokeball" />
-        </a>
-      </button>
-    </div>
-    <!-- 3e vue -->
-    <div class="game-start d-none">
-      <h1 class ="ready">Ready ?</h1>
-      <button id ="btnGo">GO !  <img src ="img/pokeball.png" class="pokeball"> </button>
-    </div>
-    <!-- 4e vue -->
-    <div class="main-game d-none">
-      <div id="pokedex">
-        <img id="pkmn-img" alt="" />
-      </div>
-      <div class="show-responses d-none">
-        <button id="showBtn" class="game-option">Voir Réponses</button>
-      </div>
-    </div>
-    <!-- 5e vue -->
-    <div class="results d-none">
-      <div id="players-result"></div>
-      <div><button id="next" disabled>Suivant</button></div>
-    </div>
+<body>
+  <h1>Welcome to Pokémon Games!</h1>
+  <!-- 1ere vue -->
+  <div class="game-selector">
+    <div id="blur" class="game-option">Play Pokémon Flou</div>
+    <div id="shadow" class="game-option">Play Who's That Pokémon?</div>
+  </div>
+  <!-- 2eme vue -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/main.js" type="module" defer></script>
-  </body>
+  <div class="player-selector d-none">
+    <h1 id="gameTitle">Jeu :</h1>
+    <div class="Gameboy">
+      <img src="./img/gameboy.png" alt="Gameboy" style="inline-size: 250px" />
+    </div>
+    <h1 class="addTitre">Ajouter des joueurs</h1>
+    <input type="text" name="player" id="playerAdd" />
+    <button id="btnPlayerAdd"><i class="fa-solid fa-plus"></i></button>
+
+    <!-- Liste des joueurs -->
+    <div id="playerList">
+      <!-- Les joueurs seront ajoutés ici -->
+    </div>
+    <div class="StartContainer">
+      <button id="btnStart">Valider <i class="fa-solid fa-check"></i></button>
+    </div>
+    <button id="btnBack">
+      <a href="index.html">Retour <i class="fa-solid fa-arrow-left-long"></i>
+        <img src="img/pokeball.png" class="pokeball" />
+      </a>
+    </button>
+  </div>
+  <!-- 3e vue -->
+  <div class="game-start d-none">
+    <h1 class="ready">Ready ?</h1>
+    <button id="btnGo">GO ! <img src="img/pokeball.png" class="pokeball"> </button>
+  </div>
+  <!-- 4e vue -->
+  <div class="main-game d-none">
+    <div id="pokedex">
+      <img id="pkmn-img" alt="" />
+    </div>
+    <div class="show-responses d-none">
+      <button id="showBtn" class="game-option">Voir Réponses</button>
+    </div>
+  </div>
+  <!-- 5e vue -->
+  <div class="results d-none">
+    <div id="players-result"></div>
+    <div><button id="next" disabled>Suivant</button></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="./js/main.js" type="module" defer></script>
+</body>
+
 </html>
