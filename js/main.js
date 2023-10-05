@@ -1,9 +1,11 @@
 //imports
 import { User } from "./user.js";
-
+import { blur } from "./blur.js";
 
 // sélection du DOM
 const gameSelect = document.querySelector(".game-selector");
+const shadowBox = document.querySelector("#shadow");
+const blurBox = document.querySelector("#blur");
 const playerSelector = document.querySelector(".player-selector");
 const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
@@ -15,21 +17,22 @@ const results = document.querySelector(".results");
 const users = document.querySelector("#users");
 const next = document.querySelector("#next");
 
+// variables globales
+let choiceMod = "";
+
 //FUNCTION GAME CHOICE
 
 function gameSelector() {
-    const shadowBox = document.querySelector("#shadow");
-    const blurBox = document.querySelector("#blur");
-    const pkmn_img = document.querySelector("#pkmn-img");
 
     shadowBox.addEventListener("click", () => {
-        pkmn_img.classList.add("shadow");
+        choiceMod = "shadow";
         console.log("shadow");
         ShowHidden(gameSelect, playerSelector);
-        });
-
+    });
+    
     blurBox.addEventListener("click", () => {
-        pkmn_img.classList.add("blur");
+        choiceMod = "blur";
+        pkmnImg.style.filter = "brightness(0)";
         console.log("blur");
         ShowHidden(gameSelect, playerSelector);
         
@@ -41,6 +44,4 @@ function ShowHidden(target,nextTarget){
     nextTarget.classList.toggle("d-none");
 }
 
-
 gameSelector();
-
