@@ -355,6 +355,13 @@ input[type="text"] {
 
 }
 
+@media (max-width: 600px) {
+    #players_result {
+    flex-direction: column;
+
+}
+}
+
 .listeResult {
     padding: 20px;
     inline-size: 250px;
@@ -390,7 +397,7 @@ input[type="text"] {
 #next {
 
     padding: 10px;
-    background-color: #0155ca;
+    background-color: #ca0101;
     inline-size: 200px;
     color: white;
     border: 2px solid #333;
@@ -401,7 +408,7 @@ input[type="text"] {
 }
 
 #next:hover {
-    background-color: #013a8b;
+    background-color: #8b0101;
     color: white;
     transition: all 0.5s ease-out;
     transform: scale(1.05);

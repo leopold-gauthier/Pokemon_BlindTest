@@ -3,7 +3,8 @@
 	div#pokedex
 	{
 		margin: 50px auto 0 auto;
-        padding-left: 40px;
+		margin-bottom: 20px;
+        padding-left: 100px;
         
 	}
 
@@ -1019,6 +1020,6 @@ div#picture img {
 
   h3 {
 	font-family: 'Press Start 2P', cursive;
-    font-size: 20px;
+    font-size: 20px !important;
     text-align: center;
   }
