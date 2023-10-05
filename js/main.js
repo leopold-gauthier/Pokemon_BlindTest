@@ -27,6 +27,7 @@ let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
 let scoreMax = 2;
+let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
 function ShowHidden(target, nextTarget) {
@@ -101,10 +102,10 @@ rdy.addEventListener("click", () => {
       pkmnImg.src = randomPokemonData.image;
       console.log("Pokémon aléatoire :", randomPokemonData);
       const pokemonResultDiv = document.getElementById("pokemon_result");
-
       pokemonResultDiv.textContent = randomPokemonData.name;
       const pokemonResultImg = document.getElementById("pkmn-imgresult");
       pokemonResultImg.src = randomPokemonData.image;
+      currentPokemon = pokemonResultImg.src;
     })
     .catch((error) => {
       console.error(
@@ -136,10 +137,10 @@ async function findRandomPokemon() {
   }
 }
 // reset image et état du bouton
-  function resetImgState() {
-    isClicked = false;
-    pkmnImg.src = "";
-  }
+function resetImgState() {
+  isClicked = false;
+  pkmnImg.src = "";
+}
 showBtn.addEventListener("click", () => {
   isClicked = true;
   if (choiceMod == "blur") {
@@ -153,7 +154,6 @@ showBtn.addEventListener("click", () => {
   // Efface le contenu précédent du div
   playersResultDiv.innerHTML = "";
 
-  
   // Boucle sur le tableau d'utilisateurs
   for (const user of users) {
     // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
@@ -166,6 +166,7 @@ showBtn.addEventListener("click", () => {
 
     userParagraph.addEventListener("click", () => {
       user.score += 1;
+      user.pokemon.push(currentPokemon);
       userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
       resetImgState();
       if (user.score >= scoreMax) {
@@ -179,7 +180,10 @@ showBtn.addEventListener("click", () => {
         // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
         for (const sortedUser of users) {
           const userParagraph = document.createElement("p");
-          userParagraph.textContent = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          sortedUser.pokemon.forEach((element) => {
+            userParagraph.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
+          });
           sortedUsersDiv.appendChild(userParagraph);
         }
 
