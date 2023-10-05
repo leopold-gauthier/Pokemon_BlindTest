@@ -105,7 +105,6 @@ rdy.addEventListener("click", () => {
       pokemonResultDiv.textContent = randomPokemonData.name;
       const pokemonResultImg = document.getElementById("pkmn-imgresult");
       pokemonResultImg.src = randomPokemonData.image;
-      
     })
     .catch((error) => {
       console.error(
