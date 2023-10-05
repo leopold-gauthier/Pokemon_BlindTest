@@ -280,3 +280,48 @@ input[type="text"] {
     justify-content: center;
     padding: 10px;
 }
+
+/* Styles pour la troisième vue */
+
+.game-start {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ready{animation:pulsate-fwd .5s ease-in-out infinite both}
+
+ @keyframes pulsate-fwd{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+
+
+ #btnGo {
+    inline-size: 200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    margin-block-start: 10px;
+
+ }
+
+
+#btnGo:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+#btnGo:hover{animation:shake-top .8s cubic-bezier(.455,.03,.515,.955) both}
+
+
+@keyframes shake-top{0%,100%{transform:rotate(0deg);transform-origin:50% 0}10%{transform:rotate(2deg)}20%,40%,60%{transform:rotate(-4deg)}30%,50%,70%{transform:rotate(4deg)}80%{transform:rotate(-2deg)}90%{transform:rotate(2deg)}}
