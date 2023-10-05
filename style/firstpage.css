@@ -58,7 +58,7 @@ button {
 
 
 .pokeball{
-    inline-size: 25px;
+    inline-size: 70px;
 }
 
 .player-selector {
@@ -297,7 +297,7 @@ input[type="text"] {
 
 
  #btnGo {
-    inline-size: 200px;
+    inline-size: 300px;
     margin: 20px;
     padding: 20px;
     background-color: #fff;
@@ -307,6 +307,9 @@ input[type="text"] {
     transition: background-color 0.3s, transform 0.3s;
     text-align: center;
     margin-block-start: 10px;
+    display: flex;
+    justify-content: space-around;
+
 
  }
 
@@ -332,4 +335,79 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     margin-block-start: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styles pour la quatrième vue */
+
+.results {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#players_result {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.listeResult {
+    padding: 20px;
+    inline-size: 250px;
+    margin-inline-end: 30px;
+    margin-block-end: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    display: flex;
+}
+
+.listeResult:hover {
+        background-color: #009c12;
+        color: #fff;
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        animation:heartbeat 1.5s ease-in-out infinite both    ;
+        -webkit-animation:heartbeat 1.5s ease-in-out infinite both;
+}
+
+@keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+
+#next {
+
+    padding: 10px;
+    background-color: #0155ca;
+    inline-size: 200px;
+    color: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-inline-end: 25px;
+}
+
+#next:hover {
+    background-color: #013a8b;
+    color: white;
+    transition: all 0.5s ease-out;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+
 }

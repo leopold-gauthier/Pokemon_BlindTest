@@ -102,8 +102,10 @@ rdy.addEventListener("click", () => {
       console.log("Pokémon aléatoire :", randomPokemonData);
       const pokemonResultDiv = document.getElementById("pokemon_result");
 
-      pokemonResultDiv.textContent =
-        "Le pokémon était : " + randomPokemonData.name;
+      pokemonResultDiv.textContent = randomPokemonData.name;
+      const pokemonResultImg = document.getElementById("pkmn-imgresult");
+      pokemonResultImg.src = randomPokemonData.image;
+      
     })
     .catch((error) => {
       console.error(
@@ -152,14 +154,15 @@ showBtn.addEventListener("click", () => {
   for (const user of users) {
     // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
     const userParagraph = document.createElement("button");
-    userParagraph.textContent = `Nom: ${user.name}, Score: ${user.score}`;
+    userParagraph.classList.add("listeResult");
+    userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
 
     // Ajoute le paragraphe au div
     playersResultDiv.appendChild(userParagraph);
 
     userParagraph.addEventListener("click", () => {
       user.score += 1;
-      userParagraph.textContent = `Nom: ${user.name}, Score: ${user.score}`;
+      userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
       isClicked = false;
       if (user.score >= scoreMax) {
         ShowHidden(results, gameEnd);
