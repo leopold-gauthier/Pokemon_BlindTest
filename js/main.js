@@ -113,14 +113,18 @@ async function findRandomPokemon() {
   }
 }
 
-showBtn.addEventListener("click", () => (isClicked = true));
+showBtn.addEventListener("click", () => {
+    isClicked = true;
 if (choiceMod == "blur") {
   blur(pkmnImg, showBtn);
 } else {
   pkmnImg.classList.remove("shadow");
 }
-
+ShowHidden(mainGame, results);
+})
 // vue 5 -------
 next.addEventListener("click", () => {
-    ShowHidden(results, mainGame);
+    ShowHidden(results, gameStart);
+    startGame();
+    ready();
 });
