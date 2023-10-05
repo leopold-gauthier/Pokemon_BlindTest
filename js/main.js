@@ -181,14 +181,16 @@ showBtn.addEventListener("click", () => {
         for (const sortedUser of users) {
           const userParagraph = document.createElement("p");
           userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          
+          const divListPkmn = document.createElement("div");
           sortedUser.pokemon.forEach((element) => {
-            userParagraph.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
+            divListPkmn.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
           });
-          sortedUsersDiv.appendChild(userParagraph);
+          sortedUsersDiv.append(userParagraph, divListPkmn);
         }
 
         // Ajoutez la div triée à la page
-        document.body.appendChild(sortedUsersDiv);
+        gameEnd.appendChild(sortedUsersDiv);
       } else {
         ShowHidden(results, gameStart);
       }
