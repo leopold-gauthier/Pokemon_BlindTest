@@ -26,7 +26,7 @@ let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
-let scoreMax = 2;
+let scoreMax = 5;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
