@@ -176,14 +176,14 @@ input[type="text"] {
 
 
 
-.BoutonValider {
+.StartContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-#Valider {
+#btnStart {
     padding: 10px;
     background-color: #0155ca;
     inline-size: 200px;
@@ -195,7 +195,7 @@ input[type="text"] {
     margin-inline-end: 25px;
 }
 
-#Valider:hover {
+#btnStart:hover {
     background-color: #013a8b;
     color: white;
     transition: all 0.5s ease-out;

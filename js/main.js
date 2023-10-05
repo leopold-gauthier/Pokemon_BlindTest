@@ -16,11 +16,12 @@ const showResponses = document.querySelector(".show-respones");
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
-// boutons users
-const users = document.querySelector("#users");
-const next = document.querySelector("#next");
+// boutons 
+const start = document.querySelector("#start");
+const ready = document.querySelector("#next");
 
-// variables globales
+// variables 
+let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 //FUNCTION GAME CHOICE
@@ -56,6 +57,20 @@ function gameSelector() {
 // vue 1 -------
 gameSelector();
 
+
+playerAdd(users);
+
+// FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
+
+function startGame(){
+    
+    if(users >= 1){
+        console.log("ca marche");
+    }
+}
+
+
+startGame();
 // vue 2 -------
 
 // vue 3 -------
@@ -70,3 +85,4 @@ if (choiceMod == "blur") {
 
 
 // vue 5 -------
+
