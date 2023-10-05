@@ -1,7 +1,7 @@
 //imports
 
 import { User } from "./user.js";
-import { blur } from "./blur.js";
+// import { blur } from "./blur.js";
 import { playerAdd } from "./user.js";
 
 // sélection du DOM
@@ -24,6 +24,7 @@ const next = document.querySelector("#next");
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
+const initialNumberBlur = 50;
 //FUNCTION GAME CHOICE
 
 function ShowHidden(target, nextTarget) {
@@ -31,10 +32,28 @@ function ShowHidden(target, nextTarget) {
   nextTarget.classList.toggle("d-none");
 }
 
+function shadowOn() {
+  pkmnImg.style.filter = "brightness(0)";
+}
+
+function blur(target) {
+  let number = initialNumberBlur;
+  target.style.filter = `blur(${number}px)`;
+  const interval = setInterval(() => {
+    number <= 0 || isClicked ? clearInterval(interval) : null;
+    number -= 0.5;
+
+    target.style.filter = `blur(${number}px)`;
+    console.log(number);
+  }, 100);
+}
+
+function effectsOff() {
+  pkmnImg.style.filter = "none";
+}
 function gameSelector() {
   blurBox.addEventListener("click", () => {
     choiceMod = "blur";
-    pkmnImg.style.filter = "blur(50)";
     gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
     console.log("blur");
     ShowHidden(gameSelect, playerSelector);
@@ -42,7 +61,6 @@ function gameSelector() {
 
   shadowBox.addEventListener("click", () => {
     choiceMod = "shadow";
-    pkmnImg.style.filter = "brightness(0)";
     gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
     console.log("shadow");
     ShowHidden(gameSelect, playerSelector);
@@ -70,7 +88,9 @@ rdy.addEventListener("click", () => {
   ShowHidden(gameStart, mainGame);
 
   if (choiceMod == "blur") {
-    blur(pkmnImg, showBtn);
+    blur(pkmnImg);
+  } else {
+    shadowOn();
   }
 
   // Utilisation de la fonction pour récupérer un Pokémon aléatoire
@@ -112,13 +132,14 @@ async function findRandomPokemon() {
 showBtn.addEventListener("click", () => {
   isClicked = true;
   if (choiceMod == "blur") {
-    blur(pkmnImg, showBtn);
+    blur(pkmnImg);
   } else {
-    pkmnImg.style.filter = "none";
+    effectsOff();
   }
   ShowHidden(mainGame, results);
 });
 // vue 5 -------
 next.addEventListener("click", () => {
+  isClicked = false;
   ShowHidden(results, gameStart);
 });
