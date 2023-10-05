@@ -13,22 +13,29 @@ const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
 const showResponses = document.querySelector(".show-respones");
+const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
-// boutons users
-const users = document.querySelector("#users");
-const next = document.querySelector("#next");
+// boutons 
+const start = document.querySelector("#start");
+const ready = document.querySelector("#next");
 
-// variables globales
+// variables 
+let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
-
+let isClicked = false;
 //FUNCTION GAME CHOICE
+
+function ShowHidden(target, nextTarget) {
+    target.classList.toggle("d-none");
+    nextTarget.classList.toggle("d-none");
+}
 
 function gameSelector() {
 
     blurBox.addEventListener("click", () => {
         choiceMod = "blur";
-        pkmnImg.classList.add("blur");
+        pkmnImg.style.filter = "blur(40)";
         gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
         console.log("blur");
         ShowHidden(gameSelect, playerSelector);
@@ -37,7 +44,6 @@ function gameSelector() {
 
     shadowBox.addEventListener("click", () => {
         choiceMod = "shadow";
-        pkmnImg.style.filter = "brightness(0)";
         pkmnImg.classList.add("shadow");
         gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
         console.log("shadow");
@@ -46,9 +52,37 @@ function gameSelector() {
     
 }
 
-function ShowHidden(target, nextTarget) {
-    target.classList.toggle("d-none");
-    nextTarget.classList.toggle("d-none");
+
+
+// vue 1 -------
+gameSelector();
+
+
+playerAdd(users);
+
+// FUNCTION DEMARRER SI IL Y'A PLUS DE DEUX JOUEURS
+
+function startGame(){
+    
+    if(users >= 1){
+        console.log("ca marche");
+    }
 }
 
-gameSelector();
+
+startGame();
+// vue 2 -------
+
+// vue 3 -------
+
+// vue 4 -------
+showBtn.addEventListener("click", ()=> isClicked = true);
+if (choiceMod == "blur") {
+    blur(pkmnImg);
+} else {
+    pkmnImg.classList.remove("shadow");
+}
+
+
+// vue 5 -------
+
