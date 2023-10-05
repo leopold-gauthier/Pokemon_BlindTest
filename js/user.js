@@ -16,6 +16,9 @@ export function playerAdd() {
         const playerName = playerNameInput.value;
 
         if (playerName.trim() !== "") {
+            // Créez une nouvelle instance de la classe User
+            const newUser = new User(playerName);
+
             // Créez une nouvelle div avec un input et un bouton "Supprimer" et ajoutez-la au conteneur
             const newDiv = document.createElement('div');
 
@@ -24,7 +27,7 @@ export function playerAdd() {
 
             newDiv.innerHTML = `
                 <i class="fa-solid fa-circle-user"></i>
-                <input type="text" value="${playerName}" readonly >
+                <input type="text" value="${newUser.name}" readonly >
                 <button class="deletePlayer"><i class="fa-solid fa-delete-left"></i></button>
             `;
 
@@ -38,17 +41,8 @@ export function playerAdd() {
 
             // Réinitialisez la valeur de l'input
             playerNameInput.value = "";
+            console.log(newUser);
         }
-    });
-    // Ajoutez un gestionnaire d'événements pour la touche "Entrée" dans le champ de texte
-    const playerNameInput = document.getElementById('playerAdd');
-    playerNameInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            // Déclenchez le clic sur le bouton "Ajouter"
-            btnAddPlayer.click();
-        }
-    });
+    });    
 }
-
 playerAdd();
