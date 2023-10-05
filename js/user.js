@@ -9,12 +9,23 @@ export class User {
 }
 
 export function playerAdd(users) {
-    
     const playerList = document.getElementById('playerList');
     const btnAddPlayer = document.getElementById('btnPlayerAdd');
+    const playerNameInput = document.getElementById('playerAdd');
 
     btnAddPlayer.addEventListener("click", function () {
-        const playerNameInput = document.getElementById('playerAdd');
+        addPlayer();
+    });
+
+    // Gestionnaire d'événement pour la touche Entrée dans le champ de texte
+    playerNameInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addPlayer();
+        }
+    });
+
+    function addPlayer() {
         const playerName = playerNameInput.value;
 
         if (playerName.trim() !== "") {
@@ -53,8 +64,8 @@ export function playerAdd(users) {
 
             // Réinitialisez la valeur de l'input
             playerNameInput.value = "";
-            // return users;
         }
-    });
+    }
 }
+
 
