@@ -12,6 +12,7 @@ const playerSelector = document.querySelector(".player-selector");
 const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
+const gameEnd = document.querySelector(".game-end");
 
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
@@ -25,6 +26,7 @@ let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
+let scoreMax = 2;
 //FUNCTION GAME CHOICE
 
 function ShowHidden(target, nextTarget) {
@@ -114,8 +116,8 @@ rdy.addEventListener("click", () => {
 // vue 4 -------
 async function findRandomPokemon() {
   try {
-    // Génère un nombre aléatoire entre 1 et 151 (inclus)
-    const randomPokemonNumber = Math.floor(Math.random() * 400) + 1;
+    // Génère un nombre aléatoire entre 1 et 493 (inclus)
+    const randomPokemonNumber = Math.floor(Math.random() * 151) + 1;
     const apiUrl = `https://pokebuildapi.fr/api/v1/pokemon/${randomPokemonNumber}`;
 
     // Récupère les données JSON de l'API en utilisant le numéro généré aléatoirement
@@ -159,13 +161,21 @@ showBtn.addEventListener("click", () => {
       user.score += 1;
       userParagraph.textContent = `Nom: ${user.name}, Score: ${user.score}`;
       isClicked = false;
-      ShowHidden(results, gameStart);
+      if (user.score >= scoreMax) {
+        ShowHidden(results, gameEnd);
+      } else {
+        ShowHidden(results, gameStart);
+      }
     });
   }
 });
 // vue 5 -------
 
+// vue 6 -------
+
 next.addEventListener("click", () => {
   isClicked = false;
   ShowHidden(results, gameStart);
 });
+
+console.log(users);
