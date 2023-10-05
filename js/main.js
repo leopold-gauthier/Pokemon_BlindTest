@@ -135,7 +135,11 @@ async function findRandomPokemon() {
     console.error("Une erreur s'est produite :", error);
   }
 }
-
+// reset image et état du bouton
+  function resetImgState() {
+    isClicked = false;
+    pkmnImg.src = "";
+  }
 showBtn.addEventListener("click", () => {
   isClicked = true;
   if (choiceMod == "blur") {
@@ -149,6 +153,7 @@ showBtn.addEventListener("click", () => {
   // Efface le contenu précédent du div
   playersResultDiv.innerHTML = "";
 
+  
   // Boucle sur le tableau d'utilisateurs
   for (const user of users) {
     // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
@@ -162,7 +167,7 @@ showBtn.addEventListener("click", () => {
     userParagraph.addEventListener("click", () => {
       user.score += 1;
       userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
-      isClicked = false;
+      resetImgState();
       if (user.score >= scoreMax) {
         ShowHidden(results, gameEnd);
       } else {
@@ -176,7 +181,7 @@ showBtn.addEventListener("click", () => {
 // vue 6 -------
 
 next.addEventListener("click", () => {
-  isClicked = false;
+  resetImgState();
   ShowHidden(results, gameStart);
 });
 
