@@ -12,14 +12,14 @@ const playerSelector = document.querySelector(".player-selector");
 const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
-const showResponses = document.querySelector(".show-respones");
+
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
 // boutons
 const start = document.querySelector("#btnStart");
 const rdy = document.querySelector("#btnGo");
-
+const next = document.querySelector("#next");
 // variables
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
@@ -34,7 +34,7 @@ function ShowHidden(target, nextTarget) {
 function gameSelector() {
   blurBox.addEventListener("click", () => {
     choiceMod = "blur";
-    pkmnImg.style.filter = "blur(40)";
+    pkmnImg.style.filter = "blur(50)";
     gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
     console.log("blur");
     ShowHidden(gameSelect, playerSelector);
@@ -70,6 +70,9 @@ startGame();
 function ready() {
   rdy.addEventListener("click", () => {
     ShowHidden(gameStart, mainGame);
+    if (choiceMod == "blur") {
+        blur(pkmnImg, showBtn);
+    }
   });
 }
 ready();
@@ -82,3 +85,6 @@ if (choiceMod == "blur") {
 }
 
 // vue 5 -------
+next.addEventListener("click", () => {
+    ShowHidden(results, mainGame);
+});
