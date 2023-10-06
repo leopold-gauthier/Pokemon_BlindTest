@@ -9,6 +9,7 @@ const gameSelect = document.querySelector(".game-selector");
 const shadowBox = document.querySelector("#shadow");
 const blurBox = document.querySelector("#blur");
 const playerSelector = document.querySelector(".player-selector");
+const playerAddInput = document.querySelector("#playerAdd");
 const gameStart = document.querySelector(".game-start");
 const mainGame = document.querySelector(".main-game");
 const pkmnImg = document.querySelector("#pkmn-img");
@@ -60,6 +61,7 @@ function gameSelector() {
     gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
     console.log("blur");
     ShowHidden(gameSelect, playerSelector);
+    playerAddInput.focus();
   });
 
   shadowBox.addEventListener("click", () => {
@@ -67,6 +69,7 @@ function gameSelector() {
     gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
     console.log("shadow");
     ShowHidden(gameSelect, playerSelector);
+    playerAddInput.focus();
   });
 }
 
