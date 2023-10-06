@@ -1,3 +1,8 @@
+html,body{
+    padding: 0%;
+    margin: 0%;
+}
+
 body {
 
     margin: 0;
@@ -27,13 +32,18 @@ button {
 
 .game-selector {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    block-size: 100vh;
-    background-image: url(../img/whosthatpokemon.png);
-    background-position-x: center;
-    background-repeat: no-repeat;
+    /* background-image: url(../img/whosthatpokemon.png); */
+    /* background-position-x: center; */
+    /* background-repeat: no-repeat; */
 }
+#game_mode{
+    display: flex;
+    flex-direction: row;
+}
+
 
 .game-option {
     margin: 20px;
@@ -384,6 +394,29 @@ input[type="text"] {
     align-items: center;
 }
 
+
+.game-reponses  {
+  
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+ 
+}
+
+.game-reponses:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
 /* Styles pour la quatrième vue */
 
 .results {
@@ -507,33 +540,62 @@ input[type="text"] {
     align-items: center;
   
 }
-
-table {
+/* table {
     width: 100%;
     border-collapse: collapse;
-}
-
+    margin-bottom: 20px;
+} */
+/* 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 th {
-    background-color: #f2f2f2;
-}
+    background-color: #417b4b;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif !important;
+} */
+
+/* tr:nth-child(even) {
+    background-color: #417b4b;
+} */
 
 .sortedUsers {
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #ED5564;
+    border-radius: 25px;
+}
+
+.sortedUsers p {
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif !important;
+    display: flex;
+    justify-content: flex-start;
+    text-align: initial;
 }
 
 .sortedUsers > div {
     flex: 1;
     margin: 10px;
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #E6E9ED;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
 }
+
 
 .pokemon_icon {
     max-width: 50px;
@@ -543,10 +605,87 @@ th {
 #vainqueurDiv {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
+    inline-size: 30%;
+    border-style: solid;
+    border-image: url(../img/cadre.png) 70 / 15px / 20px;
 }
 
-.winner {
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
+.trophy {
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
+
+.endPoke{
+    inline-size: 20%;
+	-webkit-animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes shake-lr {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    10% {
+      -webkit-transform: rotate(8deg);
+              transform: rotate(8deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-10deg);
+              transform: rotate(-10deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(10deg);
+              transform: rotate(10deg);
+    }
+    80% {
+      -webkit-transform: rotate(-8deg);
+              transform: rotate(-8deg);
+    }
+    90% {
+      -webkit-transform: rotate(8deg);
+              transform: rotate(8deg);
+    }
+  }
+  @keyframes shake-lr {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+    }
+    10% {
+      -webkit-transform: rotate(8deg);
+              transform: rotate(8deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-10deg);
+              transform: rotate(-10deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(10deg);
+              transform: rotate(10deg);
+    }
+    80% {
+      -webkit-transform: rotate(-8deg);
+              transform: rotate(-8deg);
+    }
+    90% {
+      -webkit-transform: rotate(8deg);
+              transform: rotate(8deg);
+    }
+  }
+  
 

@@ -25,7 +25,7 @@ const next = document.querySelector("#next");
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
-const initialNumberBlur = 50;
+const initialNumberBlur = 25;
 let scoreMax = 10;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
@@ -44,7 +44,7 @@ function blur(target) {
   target.style.filter = `blur(${number}px)`;
   const interval = setInterval(() => {
     number <= 0 || isClicked ? clearInterval(interval) : null;
-    number -= 0.5;
+    number -= 0.1;
 
     target.style.filter = `blur(${number}px)`;
     console.log(number);
@@ -199,7 +199,7 @@ showBtn.addEventListener("click", () => {
 
         // Mettez à jour la div "vainqueurDiv" avec le nom du vainqueur
         const vainqueurDiv = document.getElementById("vainqueurDiv");
-        vainqueurDiv.innerHTML = `<p>Vainqueur : ${vainqueur}</p>`;
+        vainqueurDiv.innerHTML = `<p>Vainqueur :<BR> ${vainqueur}</p>`;
 
         ShowHidden(results, gameEnd);
 
@@ -207,10 +207,54 @@ showBtn.addEventListener("click", () => {
         const sortedUsersDiv = document.createElement("div");
         sortedUsersDiv.classList.add("sortedUsers");
 
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
         // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
         for (const sortedUser of users) {
           const userParagraph = document.createElement("p");
-          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          userParagraph.innerHTML = `Nom: ${sortedUser.name} <br> Score: ${sortedUser.score}`;
 
           const divListResult = document.createElement("div");
           divListResult.append(userParagraph);
@@ -330,7 +374,8 @@ window.addEventListener("keydown", (event) => {
         const switchBtn = document.querySelector("#Switch");
         const body = document.querySelector("body");
         switchBtn.addEventListener("change", () => {
-          colorMod
+          
+          !switchBtn.checked
             ? (body.style.filter = `saturate(0%)`)
             : (body.style.filter = `saturate(100%)`);
           colorMod = !colorMod;
@@ -345,3 +390,4 @@ window.addEventListener("keydown", (event) => {
     }
   }
 });
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
