@@ -242,6 +242,7 @@ console.log(users);
 // bonus feature ----------------
 let isPlayed = false;
 let modalOpen = false;
+let colorMod = true;
 // Code Konami
 const konamiCode = [
   "ArrowUp",
@@ -282,7 +283,15 @@ window.addEventListener("keydown", (event) => {
               
               <div>
               
-              <label for="saturate">gameBoy</label> <input type="range" id="saturate"> <span>gameBoy Color</span>
+              
+              <div class="form-check form-switch">
+              <div class="d-flex">
+                           
+              <label class="form-check-label me-5" for="Switch">GameBoy</label>
+              <input class="form-check-input px-3" type="checkbox" role="switch" id="Switch" checked>
+              <label class="form-check-label ms-3" for="Switch">GameBoy Color</label>
+              </div>
+</div>
               </div>
               </div>
               </div>
@@ -298,7 +307,9 @@ window.addEventListener("keydown", (event) => {
         document.body.insertAdjacentHTML("beforeend", modalContent);
         const btnClose = document.querySelector("#btnClose");
         // empecher la supersposition des modales
-        btnClose.addEventListener('click', () => modalOpen = false);
+        btnClose.addEventListener("click", () => (modalOpen = false));
+
+        // gerer activation / désactivation de la musique en fonction de l'état
         const music = document.querySelector("#music");
         if (!isPlayed) {
           music.play();
@@ -308,19 +319,23 @@ window.addEventListener("keydown", (event) => {
           music.pause();
           isPlayed = false;
         }
+
         const modalPlayer = new bootstrap.Modal(
           document.getElementById("myModal2")
         );
         modalPlayer.show();
-        modalOpen = true; 
+        modalOpen = true;
 
-        const saturate = document.querySelector("#saturate");
-        saturate.addEventListener("change", () => {
-          let value = saturate.value;
-          const body = document.querySelector("body");
-
-          body.style.filter = `saturate(${value}%)`;
+        // passer du mode gameboy à gameboy color
+        const switchBtn = document.querySelector("#Switch");
+        const body = document.querySelector("body");
+        switchBtn.addEventListener("change", () => {
+          colorMod
+            ? (body.style.filter = `saturate(0%)`)
+            : (body.style.filter = `saturate(100%)`);
+          colorMod = !colorMod;
         });
+
         // Réinitialisez la position pour la prochaine utilisation
         konamiCodePosition = 0;
       }
