@@ -57,15 +57,12 @@ export function playerAdd(users) {
 
         // Supprimez la div correspondante
         newDiv.remove();
-        console.log(users);
-        // Vous pouvez maintenant utiliser "newUser" ici si nécessaire
       });
 
       playerList.appendChild(newDiv);
 
       // Réinitialisez la valeur de l'input
       playerNameInput.value = "";
-      console.log(users);
     }
   }
 }
