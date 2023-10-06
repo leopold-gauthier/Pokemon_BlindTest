@@ -9,7 +9,7 @@ body {
     text-align: center;
     background-image: url(../img/125916.jpg);
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Press Start 2P', cursive !important;
 
 }
 
@@ -27,7 +27,7 @@ h1 {
 }
 
 button {
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Press Start 2P', cursive !important;
 }
 
 .game-selector {
@@ -575,13 +575,21 @@ th {
     padding: 10px;
     background-color: #ED5564;
     border-radius: 25px;
+    inline-size: 80%;
+}
+
+@media (max-width: 800px) {
+    .sortedUsers  {
+    flex-direction: column;
+
+}
 }
 
 .sortedUsers p {
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif !important;
+    /* font-weight: bold; */
+    font-family: 'Press Start 2P', cursive;
     display: flex;
-    inline-size: 100px ; 
+    /* inline-size: 100px ;  */
     justify-content: flex-start;
     text-align: initial;
 }
@@ -611,6 +619,7 @@ th {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     inline-size: 40%;
+    margin-bottom: 30px;
     border-style: solid;
     border-image: url(../img/cadre.png) 70 / 15px / 20px;
 }
