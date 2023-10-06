@@ -189,7 +189,7 @@ showBtn.addEventListener("click", () => {
     userParagraph.addEventListener("click", () => {
       user.score += 1;
       user.pokemon.push(currentPokemon);
-      userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
+      userParagraph.innerHTML = `Nom:${user.name} <br> Score:${user.score}`;
       resetImgState();
       if (user.score >= scoreMax) {
         users.sort((a, b) => b.score - a.score);
