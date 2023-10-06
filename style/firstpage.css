@@ -389,7 +389,6 @@ input[type="text"] {
 .main-game {
     display: flex;
     justify-content: center;
-    margin-block-start: 20px;
     flex-direction: column;
     align-items: center;
 }
