@@ -144,8 +144,7 @@ input[type="text"] {
 
     padding: 20px;
     inline-size: 250px;
-    margin-inline-end: 30px;
-    margin-block-end: 20px;
+    margin: 1%;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
