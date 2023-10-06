@@ -129,7 +129,7 @@ input[type="text"] {
 .caseJoueur input {
     border: none;
     padding: 10px;
-    inline-size: 60%;
+    inline-size: 80%;
     margin-inline-end: 10px;
     border-radius: 0pX;
     -webkit-border-radius: 0pX;
@@ -143,7 +143,7 @@ input[type="text"] {
 .caseJoueur {
 
     padding: 20px;
-    inline-size: 250px;
+    inline-size: 275px;
     margin: 1%;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -595,7 +595,7 @@ th {
 }
 
 .sortedUsers > div {
-    flex: 1;
+    flex: 1 2 40%;
     margin: 10px;
     border: 1px solid #ddd;
     padding: 35px;
