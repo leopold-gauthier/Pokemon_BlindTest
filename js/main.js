@@ -26,7 +26,7 @@ let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
-let scoreMax = 10;
+let scoreMax = 2;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
@@ -199,7 +199,7 @@ showBtn.addEventListener("click", () => {
 
         // Mettez à jour la div "vainqueurDiv" avec le nom du vainqueur
         const vainqueurDiv = document.getElementById("vainqueurDiv");
-        vainqueurDiv.innerHTML = `<p>Vainqueur : ${vainqueur}</p>`;
+        vainqueurDiv.innerHTML = `<p>Vainqueur :<BR> ${vainqueur}</p>`;
 
         ShowHidden(results, gameEnd);
 
@@ -207,10 +207,54 @@ showBtn.addEventListener("click", () => {
         const sortedUsersDiv = document.createElement("div");
         sortedUsersDiv.classList.add("sortedUsers");
 
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
+        confetti({
+          particleCount: 1000,
+          startVelocity: 30,
+          spread: 360,
+          origin: {
+            x: Math.random(),
+            // since they fall down, start a bit higher than random
+            y: Math.random() - 0.2
+          }
+        });
+
         // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
         for (const sortedUser of users) {
           const userParagraph = document.createElement("p");
-          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+          userParagraph.innerHTML = `Nom: ${sortedUser.name} <br> Score: ${sortedUser.score}`;
 
           const divListResult = document.createElement("div");
           divListResult.append(userParagraph);
@@ -238,3 +282,5 @@ next.addEventListener("click", () => {
 });
 
 console.log(users);
+
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
