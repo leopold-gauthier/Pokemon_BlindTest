@@ -283,4 +283,111 @@ next.addEventListener("click", () => {
 
 console.log(users);
 
+// bonus feature ----------------
+let isPlayed = false;
+let modalOpen = false;
+let colorMod = true;
+// Code Konami
+const konamiCode = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+];
+
+let konamiCodePosition = 0;
+
+// Ajoutez un écouteur d'événements clavier à la fenêtre
+window.addEventListener("keydown", (event) => {
+  // Vérifiez si la touche enfoncée correspond à la prochaine touche du code Konami
+  if (!modalOpen) {
+    if (event.key === konamiCode[konamiCodePosition]) {
+      // Incrémentez la position dans le code Konami
+      konamiCodePosition++;
+
+      // Si le code Konami est terminé, exécutez votre action
+      if (konamiCodePosition === konamiCode.length) {
+        // Le code Konami a été exécuté avec succès
+        const modalContent = `
+      <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+      <h3 class="modal-title" id="exampleModalLabel2">Console Choisie</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              <div class="d-flex flex-column justify-center align-items-center">
+              
+              <div>
+              
+              
+              <div class="form-check form-switch">
+              <div class="d-flex">
+                           
+              <label class="form-check-label me-5" for="Switch">GameBoy</label>
+              <input class="form-check-input px-3" type="checkbox" role="switch" id="Switch" checked>
+              <label class="form-check-label ms-3" for="Switch">GameBoy Color</label>
+              </div>
+</div>
+              </div>
+              </div>
+              </div>
+              <audio id="music" src="./musics/combat02.mp3" preload="auto" loop></audio>
+              <div class="modal-footer">
+              <button id="btnClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button> 
+              </div>
+              </div>
+              </div>
+        </div>
+      </div>
+      `;
+        document.body.insertAdjacentHTML("beforeend", modalContent);
+        const btnClose = document.querySelector("#btnClose");
+        // empecher la supersposition des modales
+        btnClose.addEventListener("click", () => (modalOpen = false));
+
+        // gerer activation / désactivation de la musique en fonction de l'état
+        const music = document.querySelector("#music");
+        if (!isPlayed) {
+          music.play();
+          music.volume = 0.3;
+          isPlayed = true;
+        } else {
+          music.pause();
+          isPlayed = false;
+        }
+
+        const modalPlayer = new bootstrap.Modal(
+          document.getElementById("myModal2")
+        );
+        modalPlayer.show();
+        modalOpen = true;
+
+        // passer du mode gameboy à gameboy color
+        const switchBtn = document.querySelector("#Switch");
+        const body = document.querySelector("body");
+        switchBtn.addEventListener("change", () => {
+          
+          !switchBtn.checked
+            ? (body.style.filter = `saturate(0%)`)
+            : (body.style.filter = `saturate(100%)`);
+          colorMod = !colorMod;
+        });
+
+        // Réinitialisez la position pour la prochaine utilisation
+        konamiCodePosition = 0;
+      }
+    } else {
+      // Si la touche ne correspond pas au code Konami, réinitialisez la position
+      konamiCodePosition = 0;
+    }
+  }
+});
 import confetti from "https://cdn.skypack.dev/canvas-confetti";
