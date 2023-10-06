@@ -519,6 +519,7 @@ input[type="text"] {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     margin-inline-end: 25px;
+    margin-bottom: 10px;
 }
 
 #next:hover {
@@ -572,6 +573,7 @@ th {
     flex-wrap: wrap;
     border: 1px solid #ddd;
     margin-top: 10px;
+    padding: 10px;
     background-color: #ED5564;
     border-radius: 25px;
 }
@@ -580,6 +582,7 @@ th {
     font-weight: bold;
     font-family: 'Montserrat', sans-serif !important;
     display: flex;
+    inline-size: 100px ; 
     justify-content: flex-start;
     text-align: initial;
 }
@@ -588,7 +591,7 @@ th {
     flex: 1;
     margin: 10px;
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 35px;
     font-size: 16px;
     border-radius: 25px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -608,7 +611,7 @@ th {
 #vainqueurDiv {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
-    inline-size: 30%;
+    inline-size: 40%;
     border-style: solid;
     border-image: url(../img/cadre.png) 70 / 15px / 20px;
 }
@@ -620,6 +623,12 @@ th {
 
 .endPoke{
     inline-size: 20%;
+	-webkit-animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+.trophy:hover{
+    
 	-webkit-animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 	animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
