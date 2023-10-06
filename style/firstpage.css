@@ -1,3 +1,8 @@
+html,body{
+    padding: 0%;
+    margin: 0%;
+}
+
 body {
 
     margin: 0;
@@ -8,6 +13,9 @@ body {
 
 }
 
+.modal{
+    height: 100vh;
+}
 
 
 h1 {
@@ -24,13 +32,18 @@ button {
 
 .game-selector {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    block-size: 100vh;
-    background-image: url(../img/whosthatpokemon.png);
-    background-position-x: center;
-    background-repeat: no-repeat;
+    /* background-image: url(../img/whosthatpokemon.png); */
+    /* background-position-x: center; */
+    /* background-repeat: no-repeat; */
 }
+#game_mode{
+    display: flex;
+    flex-direction: row;
+}
+
 
 .game-option {
     margin: 20px;

@@ -25,8 +25,8 @@ const next = document.querySelector("#next");
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
-const initialNumberBlur = 50;
-let scoreMax = 2;
+const initialNumberBlur = 25;
+let scoreMax = 10;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
@@ -44,7 +44,7 @@ function blur(target) {
   target.style.filter = `blur(${number}px)`;
   const interval = setInterval(() => {
     number <= 0 || isClicked ? clearInterval(interval) : null;
-    number -= 0.5;
+    number -= 0.1;
 
     target.style.filter = `blur(${number}px)`;
     console.log(number);
