@@ -217,8 +217,8 @@ showBtn.addEventListener("click", () => {
           origin: {
             x: Math.random(),
             // since they fall down, start a bit higher than random
-            y: Math.random() - 0.2
-          }
+            y: Math.random() - 0.2,
+          },
         });
 
         confetti({
@@ -228,8 +228,8 @@ showBtn.addEventListener("click", () => {
           origin: {
             x: Math.random(),
             // since they fall down, start a bit higher than random
-            y: Math.random() - 0.2
-          }
+            y: Math.random() - 0.2,
+          },
         });
 
         confetti({
@@ -239,8 +239,8 @@ showBtn.addEventListener("click", () => {
           origin: {
             x: Math.random(),
             // since they fall down, start a bit higher than random
-            y: Math.random() - 0.2
-          }
+            y: Math.random() - 0.2,
+          },
         });
 
         confetti({
@@ -250,8 +250,8 @@ showBtn.addEventListener("click", () => {
           origin: {
             x: Math.random(),
             // since they fall down, start a bit higher than random
-            y: Math.random() - 0.2
-          }
+            y: Math.random() - 0.2,
+          },
         });
 
         // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
@@ -377,7 +377,6 @@ window.addEventListener("keydown", (event) => {
         const switchBtn = document.querySelector("#Switch");
         const body = document.querySelector("body");
         switchBtn.addEventListener("change", () => {
-          
           !switchBtn.checked
             ? (body.style.filter = `saturate(0%)`)
             : (body.style.filter = `saturate(100%)`);
