@@ -26,7 +26,7 @@ let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
 const initialNumberBlur = 50;
-let scoreMax = 5;
+let scoreMax = 10;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
 
@@ -82,6 +82,28 @@ playerAdd(users);
 start.addEventListener("click", () => {
   if (users.length >= 2) {
     ShowHidden(playerSelector, gameStart);
+  } else {
+    const modalContent = `
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Veuillez ajouter au moins deux joueurs pour commencer a jouer.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+    document.body.insertAdjacentHTML("beforeend", modalContent);
+    const modalPlayer = new bootstrap.Modal(document.getElementById("myModal"));
+    modalPlayer.show();
   }
 });
 
@@ -155,56 +177,56 @@ showBtn.addEventListener("click", () => {
   playersResultDiv.innerHTML = "";
 
   // Boucle sur le tableau d'utilisateurs
- for (const user of users) {
-  // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
-  const userParagraph = document.createElement("button");
-  userParagraph.classList.add("listeResult");
-  userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
-
-  // Ajoute le paragraphe au div
-  playersResultDiv.appendChild(userParagraph);
-
-  userParagraph.addEventListener("click", () => {
-    user.score += 1;
-    user.pokemon.push(currentPokemon);
+  for (const user of users) {
+    // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
+    const userParagraph = document.createElement("button");
+    userParagraph.classList.add("listeResult");
     userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
-    resetImgState();
-    if (user.score >= scoreMax) {
-      users.sort((a, b) => b.score - a.score);
 
-      // Trouvez le nom du vainqueur (le premier utilisateur trié)
-      const vainqueur = users[0].name;
+    // Ajoute le paragraphe au div
+    playersResultDiv.appendChild(userParagraph);
 
-      // Mettez à jour la div "vainqueurDiv" avec le nom du vainqueur
-      const vainqueurDiv = document.getElementById("vainqueurDiv");
-      vainqueurDiv.innerHTML = `<p>Vainqueur : ${vainqueur}</p>`;
+    userParagraph.addEventListener("click", () => {
+      user.score += 1;
+      user.pokemon.push(currentPokemon);
+      userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
+      resetImgState();
+      if (user.score >= scoreMax) {
+        users.sort((a, b) => b.score - a.score);
 
-      ShowHidden(results, gameEnd);
+        // Trouvez le nom du vainqueur (le premier utilisateur trié)
+        const vainqueur = users[0].name;
 
-      // Créez une nouvelle div pour afficher les utilisateurs triés
-      const sortedUsersDiv = document.createElement("div");
-      sortedUsersDiv.classList.add("sortedUsers");
+        // Mettez à jour la div "vainqueurDiv" avec le nom du vainqueur
+        const vainqueurDiv = document.getElementById("vainqueurDiv");
+        vainqueurDiv.innerHTML = `<p>Vainqueur : ${vainqueur}</p>`;
 
-      // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
-      for (const sortedUser of users) {
-        const userParagraph = document.createElement("p");
-        userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+        ShowHidden(results, gameEnd);
 
-        const divListResult = document.createElement("div");
-        divListResult.append(userParagraph);
-        sortedUser.pokemon.forEach((element) => {
-          divListResult.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
-        });
-        sortedUsersDiv.append(divListResult);
+        // Créez une nouvelle div pour afficher les utilisateurs triés
+        const sortedUsersDiv = document.createElement("div");
+        sortedUsersDiv.classList.add("sortedUsers");
+
+        // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
+        for (const sortedUser of users) {
+          const userParagraph = document.createElement("p");
+          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+
+          const divListResult = document.createElement("div");
+          divListResult.append(userParagraph);
+          sortedUser.pokemon.forEach((element) => {
+            divListResult.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
+          });
+          sortedUsersDiv.append(divListResult);
+        }
+
+        // Ajoutez la div triée à la page
+        gameEnd.appendChild(sortedUsersDiv);
+      } else {
+        ShowHidden(results, gameStart);
       }
-
-      // Ajoutez la div triée à la page
-      gameEnd.appendChild(sortedUsersDiv);
-    } else {
-      ShowHidden(results, gameStart);
-    }
-  });
-}
+    });
+  }
 });
 // vue 5 -------
 
