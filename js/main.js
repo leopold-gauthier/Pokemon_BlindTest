@@ -155,48 +155,56 @@ showBtn.addEventListener("click", () => {
   playersResultDiv.innerHTML = "";
 
   // Boucle sur le tableau d'utilisateurs
-  for (const user of users) {
-    // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
-    const userParagraph = document.createElement("button");
-    userParagraph.classList.add("listeResult");
+ for (const user of users) {
+  // Crée un élément de paragraphe (<p>) pour afficher les informations de l'utilisateur
+  const userParagraph = document.createElement("button");
+  userParagraph.classList.add("listeResult");
+  userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
+
+  // Ajoute le paragraphe au div
+  playersResultDiv.appendChild(userParagraph);
+
+  userParagraph.addEventListener("click", () => {
+    user.score += 1;
+    user.pokemon.push(currentPokemon);
     userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
+    resetImgState();
+    if (user.score >= scoreMax) {
+      users.sort((a, b) => b.score - a.score);
 
-    // Ajoute le paragraphe au div
-    playersResultDiv.appendChild(userParagraph);
+      // Trouvez le nom du vainqueur (le premier utilisateur trié)
+      const vainqueur = users[0].name;
 
-    userParagraph.addEventListener("click", () => {
-      user.score += 1;
-      user.pokemon.push(currentPokemon);
-      userParagraph.innerHTML = `Nom: ${user.name} <br> Score: ${user.score}`;
-      resetImgState();
-      if (user.score >= scoreMax) {
-        ShowHidden(results, gameEnd);
-        users.sort((a, b) => b.score - a.score);
+      // Mettez à jour la div "vainqueurDiv" avec le nom du vainqueur
+      const vainqueurDiv = document.getElementById("vainqueurDiv");
+      vainqueurDiv.innerHTML = `<p>Vainqueur : ${vainqueur}</p>`;
 
-        // Créez une nouvelle div pour afficher les utilisateurs triés
-        const sortedUsersDiv = document.createElement("div");
-        sortedUsersDiv.classList.add("sortedUsers");
+      ShowHidden(results, gameEnd);
 
-        // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
-        for (const sortedUser of users) {
-          const userParagraph = document.createElement("p");
-          userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
+      // Créez une nouvelle div pour afficher les utilisateurs triés
+      const sortedUsersDiv = document.createElement("div");
+      sortedUsersDiv.classList.add("sortedUsers");
 
-          const divListResult = document.createElement("div");
-          divListResult.append(userParagraph);
-          sortedUser.pokemon.forEach((element) => {
-            divListResult.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
-          });
-          sortedUsersDiv.append(divListResult);
-        }
+      // Bouclez sur les utilisateurs triés et créez les éléments de paragraphe
+      for (const sortedUser of users) {
+        const userParagraph = document.createElement("p");
+        userParagraph.innerHTML = `Nom: ${sortedUser.name}, Score: ${sortedUser.score}`;
 
-        // Ajoutez la div triée à la page
-        gameEnd.appendChild(sortedUsersDiv);
-      } else {
-        ShowHidden(results, gameStart);
+        const divListResult = document.createElement("div");
+        divListResult.append(userParagraph);
+        sortedUser.pokemon.forEach((element) => {
+          divListResult.innerHTML += `<img class="pokemon_icon" src="${element}"/>`;
+        });
+        sortedUsersDiv.append(divListResult);
       }
-    });
-  }
+
+      // Ajoutez la div triée à la page
+      gameEnd.appendChild(sortedUsersDiv);
+    } else {
+      ShowHidden(results, gameStart);
+    }
+  });
+}
 });
 // vue 5 -------
 
