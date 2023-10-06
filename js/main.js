@@ -1,7 +1,4 @@
 //imports
-
-import { User } from "./user.js";
-// import { blur } from "./blur.js";
 import { playerAdd } from "./user.js";
 
 // sélection du DOM
@@ -18,15 +15,17 @@ const gameEnd = document.querySelector(".game-end");
 const showBtn = document.querySelector("#showBtn");
 const results = document.querySelector(".results");
 const gameTitle = document.querySelector("#gameTitle");
+
 // boutons
 const start = document.querySelector("#btnStart");
 const rdy = document.querySelector("#btnGo");
 const next = document.querySelector("#next");
+
 // variables
 let users = []; // Tableau pour stocker les instances de la classe User
 let choiceMod = "";
 let isClicked = false;
-const initialNumberBlur = 25;
+const initialNumberBlur = 20;
 let scoreMax = 10;
 let currentPokemon = "";
 //FUNCTION GAME CHOICE
@@ -45,10 +44,9 @@ function blur(target) {
   target.style.filter = `blur(${number}px)`;
   const interval = setInterval(() => {
     number <= 0 || isClicked ? clearInterval(interval) : null;
-    number -= 0.1;
+    number -= 0.12;
 
     target.style.filter = `blur(${number}px)`;
-    console.log(number);
   }, 100);
 }
 
@@ -59,7 +57,6 @@ function gameSelector() {
   blurBox.addEventListener("click", () => {
     choiceMod = "blur";
     gameTitle.textContent = "Jeu : Pokémon Flou"; // Définit le titre du jeu
-    console.log("blur");
     ShowHidden(gameSelect, playerSelector);
     playerAddInput.focus();
   });
@@ -67,7 +64,6 @@ function gameSelector() {
   shadowBox.addEventListener("click", () => {
     choiceMod = "shadow";
     gameTitle.textContent = "Jeu : Who's That Pokémon?"; // Définit le titre du jeu
-    console.log("shadow");
     ShowHidden(gameSelect, playerSelector);
     playerAddInput.focus();
   });
@@ -125,7 +121,6 @@ rdy.addEventListener("click", () => {
   findRandomPokemon()
     .then((randomPokemonData) => {
       pkmnImg.src = randomPokemonData.image;
-      console.log("Pokémon aléatoire :", randomPokemonData);
       const pokemonResultDiv = document.getElementById("pokemon_result");
       pokemonResultDiv.textContent = randomPokemonData.name;
       const pokemonResultImg = document.getElementById("pkmn-imgresult");
@@ -284,8 +279,6 @@ next.addEventListener("click", () => {
   ShowHidden(results, gameStart);
 });
 
-console.log(users);
-
 // bonus feature ----------------
 let isPlayed = false;
 let modalOpen = false;
@@ -319,35 +312,30 @@ window.addEventListener("keydown", (event) => {
         // Le code Konami a été exécuté avec succès
         const modalContent = `
       <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-      <div class="modal-dialog">
-      <div class="modal-content">
-      <div class="modal-header">
-      <h3 class="modal-title" id="exampleModalLabel2">Console Choisie</h3>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel2">Console Choisie</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
+            </div>
+            <div class="modal-body">
               <div class="d-flex flex-column justify-center align-items-center">
-              
-              <div>
-              
-              
-              <div class="form-check form-switch">
-              <div class="d-flex">
-                           
-              <label class="form-check-label me-5" for="Switch">GameBoy</label>
-              <input class="form-check-input px-3" type="checkbox" role="switch" id="Switch" checked>
-              <label class="form-check-label ms-3" for="Switch">GameBoy Color</label>
+                <div>          
+                  <div class="form-check form-switch">
+                    <div class="d-flex">             
+                      <label class="form-check-label me-5" for="Switch">GameBoy</label>
+                      <input class="form-check-input px-3" type="checkbox" role="switch" id="Switch" checked>
+                      <label class="form-check-label ms-3" for="Switch">GameBoy Color</label>
+                    </div>
+                  </div>
+                </div>
               </div>
-</div>
-              </div>
-              </div>
-              </div>
-              <audio id="music" src="./musics/combat02.mp3" preload="auto" loop></audio>
-              <div class="modal-footer">
+            </div>
+            <audio id="music" src="./musics/combat02.mp3" preload="auto" loop></audio>
+            <div class="modal-footer">
               <button id="btnClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button> 
-              </div>
-              </div>
-              </div>
+            </div>
+          </div>
         </div>
       </div>
       `;
